@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animeflix - Plantilla de películas</title>
+    <link rel="stylesheet" href="../../assets/css/style.bundle.css"/>
+</head>
+<body>
+<!-- aside#START -->
+<div class="aside-canvas z-50">
+    <div class="mb-8 flex items-center justify-between">
+        <a class="flex items-center gap-3 text-sm font-semibold" href="../"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-50"><path d="M9 14 4 9l5-5"></path><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11"></path></svg> back</a>
+        <button class="close-btn flex md:hidden"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+    </div>
+    <!-- API THEMOVIEDB -->
+    <div class="mb-8 tmdb-wrapper" data-type="tv" data-set-template="serie">
+        <label class="block text-sm font-bold text-zinc-500 mb-2">ID Serie</label>
+        <input type="text" id="proId" class="border border-zinc-500  bg-transparent rounded text-sm font-semibold outline-none focus:bg-zinc-700/25 p-3 py-4 leading-none w-full text-white placeholder:text-zinc-400 mb-1.5" placeholder="ID serie de themoviedb.org">
+        <button id="tmdb-load-data" class="bg-zinc-700 text-white hover:bg-zinc-600 p-4 text-sm font-semibold rounded block w-full duration-300 uppercase">Cargar datos</button>
+    </div>
+
+    <!-- Otros generadores -->
+    <div>
+        <label class="block text-sm font-bold text-zinc-500 mb-2">Otras plantillas disponibles</label>
+        <!-- series -->
+        <a class="border border-zinc-700 text-white hover:bg-zinc-600 p-4 py-3 text-sm font-semibold rounded flex items-center justify-between w-full duration-300 mb-2" href="./movies.html">Películas <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-25"><path d="m6 17 5-5-5-5"></path><path d="m13 17 5-5-5-5"></path></svg></a>
+        <!-- Episodes -->
+        <a class="border border-zinc-700 text-white hover:bg-zinc-600 p-4 py-3 text-sm font-semibold rounded flex items-center justify-between w-full duration-300" href="./episodes.html">Episodios <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-25"><path d="m6 17 5-5-5-5"></path><path d="m13 17 5-5-5-5"></path></svg></a>
+    </div>
+</div>
+<!-- aside#END -->
+
+<!-- FORM#START -->
+<div class="md:w-[calc(100%_-_320px) h-full md:ml-[320px]">
+    <!-- FORM-HTML#START -->
+    <div class="p-4">
+        <header class="mb-6 border-l-4 border-zinc-200 pl-4"><h1 class="text-3xl font-bold text-zinc-700">Serie</h1></header>
+        <div class="tabs">
+            <button data-id="fields"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-asterisk"><path d="M12 6v12"/><path d="M17.196 9 6.804 15"/><path d="m6.804 9 10.392 6"/></svg> Formulario</button>
+            <button data-id="download">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-down-dash"><path d="M15 5H9"/><path d="M15 9v3h4l-7 7-7-7h4V9h6z"/></svg> Nueva sección
+            </button>
+        </div>
+        <div id="download" class="builder-dl tabs-element dynamic-data">
+            <div class="grid grid-cols-5 bg-zinc-100 rounded-md overflow-auto dynamic-fields" id="embed-fields">
+                <input type="text" name="url" placeholder="URL servidor" class="bg-transparent p-4 outline-none text-sm font-semibold"/>
+                <select name="name" class="bg-transparent p-4 outline-none text-sm font-semibold">
+                    <option value="HD - ">Nombre</option>
+                    <option value="FHD - ">FHD</option>
+                    <option value="HD - ">HD</option>
+                    <option value="SD - ">SD</option>
+                </select>
+                <select name="quality" class="bg-transparent p-4 outline-none text-sm font-semibold">
+                    <option value="720p">Calidad del video</option>
+                    <option value="8K">8K</option>
+                    <option value="4K">4K</option>
+                    <option value="2K">2K</option>
+                    <option value="HD">HD</option>
+                    <option value="SD">SD</option>
+                    <option value="4320p">4320p</option>
+                    <option value="2160p">2160p</option>
+                    <option value="1440p">1440p</option>
+                    <option value="1080p">1080p</option>
+                    <option value="720p">720p</option>
+                    <option value="480p">480p</option>
+                    <option value="360p">360p</option>
+                    <option value="240p">240p</option>
+                </select>
+                <input type="text" name="size" placeholder="Nombre" class="bg-transparent p-4 outline-none text-sm font-semibold"/>
+                <button class="bg-indigo-500 text-white text-center font-bold uppercase">Agregar</button>
+            </div>
+            <div class="dynamic-insert" id="dl"></div>
+        </div>
+        <div id="fields" class="builder-fields tabs-element is-visible">
+            <!-- Title, orignal title -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <!-- #title -->
+                <div class="w-full mb-6"><label for="title" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Title</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" id="title" type="text" value="" name="title"></div>
+                <!-- original title -->
+                <div class="w-full mb-6"><label for="original_title" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Original title</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" id="original_title" type="text" value="" name="original_title"></div>
+            </div>
+
+            <!-- #extra content -->
+            <div id="tmdbX" class="w-full mb-6">
+                <label for="content" class="block select-none mb-2 text-sm font-semibold text-zinc-700">ID Serie</label>
+                <textarea id="content" name="content" class="w-full p-4 border-2 border-zinc-200 rounded focus:outline-indigo-500"></textarea>
+            </div>
+
+            <!-- #synopsis -->
+            <div class="w-full mb-6">
+                <label for="synopsis" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Sinopsis</label>
+                <textarea id="synopsis" name="synopsis" class="w-full p-4 border-2 border-zinc-200 rounded focus:outline-indigo-500"></textarea>
+            </div>
+
+            <!-- seasons, episodes, episode runtime -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+                <!-- #seasons -->
+                <div class="w-full mb-6"><label for="seasons" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Seasons</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" placeholder="Total seasons" id="seasons" type="number" value="" name="seasons"></div>
+                <!-- #episodes -->
+                <div class="w-full mb-6"><label for="episodes" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Episodes</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" placeholder="Total episodes" id="episodes" type="number" value="" name="episodes"></div>
+                <!-- #runtime episode -->
+                <div class="w-full mb-6"><label for="runtime" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Runtime episode</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" id="runtime" type="text" value="" name="runtime"></div>
+            </div>
+
+            <!-- runtime, year, release date -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <!-- #year -->
+                <div class="w-full mb-6"><label for="year" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Year</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" placeholder="Year release" id="year" type="text" value="" name="year"></div>
+                <!-- #Release date -->
+                <div class="w-full mb-6"><label for="release_data" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Release date</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" id="release_data" type="text" value="" name="release_data"></div>
+            </div>
+
+            <!-- TMDB rate, genres, trailer youtube -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                <!-- #tmdb rate -->
+                <div class="w-full mb-6"><label for="imdb" class="block select-none mb-2 text-sm font-semibold text-zinc-700">TMDB rate</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" placeholder="Puntuación obtenida de themoviedb.org" id="imdb" type="text" value="" name="imdb"></div>
+                <!-- #genres -->
+                <div class="w-full mb-6"><label for="genres" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Genres</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" placeholder="Genres (separate by comma)" id="genres" type="text" value="" name="genres"></div>
+                <!-- #trailer-youtube -->
+                <div class="w-full mb-6"><label for="trailer_id" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Trailer youtube</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" placeholder="Youtube ID" id="trailer_id" type="text" value="" name="trailer_id"></div>
+            </div>
+
+            <!-- poster, backdrop  -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <!-- poster -->
+                <div class="w-full mb-6"><label for="poster_image" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Poster image</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" placeholder="Hotlinks for poster image" id="poster_image" type="text" value="" name="poster_image"></div>
+                <!-- Backdrop -->
+                <div class="w-full mb-6"><label for="backdrop_image" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Backdrop image</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" placeholder="Hotlinks for backdrop image" id="backdrop_image" type="text" value="" name="backdrop_image"></div>
+            </div>
+        </div>
+        <div class="sticky bottom-0 w-full p-6 pt-0 text-center bg-gradient-to-b from-transparent to-white z-10">
+            <button id="generate-html" class="bg-indigo-500 text-white text-sm p-4 leading-none rounded uppercase font-bold hover:bg-indigo-600 duration-200">
+                Obtener HTML
+            </button>
+        </div>
+    </div>
+    <!-- FORM-HTML#END -->
+</div>
+<!-- FORM#END -->
+<script src="./templates.js"></script>
+<script src="./template.embed.js"></script>
+<script src="./template.download.js"></script>
+<script src="../../assets/js/bundle.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>$(document).ready(function(){
+    $("input#proId").on("keyup", function(){
+        var valor = $(this).val();
+        var soloNumeros = '';
+        // Expresión regular para encontrar números después de "/movie/" o "/tv/"
+        var match = valor.match(/\/(movie|tv)\/(\d+)/);
+        if (match) {
+        soloNumeros = match[2];
+        }
+        $("div#tmdbX textarea").html(soloNumeros);
+    });
+});
+    </script>
+</body>
+</html>

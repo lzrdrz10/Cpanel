@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime - flixPlantilla de películas</title>
+    <link rel="stylesheet" href="../../assets/css/style.bundle.css"/>
+</head>
+<body>
+<!-- aside#START -->
+<div class="aside-canvas z-50">
+    <div class="mb-8 flex items-center justify-between">
+        <a class="flex items-center gap-3 text-sm font-semibold" href="../"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-50"><path d="M9 14 4 9l5-5"></path><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11"></path></svg> back</a>
+        <button class="close-btn flex md:hidden"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+    </div>
+    <!-- API THEMOVIEDB -->
+    <div class="mb-8 tmdb-wrapper" data-type="episode" data-set-template="episode">
+        <label class="block text-sm font-bold text-zinc-500 mb-2">ID Serie</label>
+        <input type="text" id="proId" class="border border-zinc-500  bg-transparent rounded text-sm font-semibold outline-none focus:bg-zinc-700/25 p-3 py-4 leading-none w-full text-white placeholder:text-zinc-400 mb-1.5" placeholder="ID serie de themoviedb.org">
+        <button id="tmdb-load-data" class="bg-zinc-700 text-white hover:bg-zinc-600 p-4 text-sm font-semibold rounded block w-full duration-300 uppercase">Cargar episodios</button>
+    </div>
+
+    <!-- Otros generadores -->
+    <div>
+        <label class="block text-sm font-bold text-zinc-500 mb-2">Otras plantillas disponibles</label>
+        <!-- series -->
+        <a class="border border-zinc-700 text-white hover:bg-zinc-600 p-4 py-3 text-sm font-semibold rounded flex items-center justify-between w-full duration-300 mb-2" href="./movies.html">Películas <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-25"><path d="m6 17 5-5-5-5"></path><path d="m13 17 5-5-5-5"></path></svg></a>
+        <!-- Episodes -->
+        <a class="border border-zinc-700 text-white hover:bg-zinc-600 p-4 py-3 text-sm font-semibold rounded flex items-center justify-between w-full duration-300" href="./episodes.html">Episodios <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-25"><path d="m6 17 5-5-5-5"></path><path d="m13 17 5-5-5-5"></path></svg></a>
+    </div>
+</div>
+<!-- aside#END -->
+
+<!-- FORM#START -->
+<div class="md:w-[calc(100%_-_320px) h-full md:ml-[320px]">
+    <!-- FORM-HTML#START -->
+    <div class="p-4">
+        <header class="mb-6 border-l-4 border-zinc-200 pl-4"><h1 class="text-3xl font-bold text-zinc-700">Episodios</h1></header>
+        <div class="tabs">
+            <button data-id="fields"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-asterisk"><path d="M12 6v12"/><path d="M17.196 9 6.804 15"/><path d="m6.804 9 10.392 6"/></svg> Formulario</button>
+            <button data-id="embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play"><polygon points="5 3 19 12 5 21 5 3"/></svg> Enlaces de vídeo</button>
+            <button data-id="download">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-down-dash"><path d="M15 5H9"/><path d="M15 9v3h4l-7 7-7-7h4V9h6z"/></svg> Nueva sección
+            </button>
+        </div>
+        <div id="embed" class="builder-embed tabs-element dynamic-data">
+            <div class="grid grid-cols-5 bg-zinc-100 rounded-md overflow-auto dynamic-fields" id="embed-fields">
+                <select name="lang" class="bg-transparent p-4 outline-none text-sm font-semibold">
+                    <option value="HD">Calidad 2</option>
+                    <option value="4K - ">4K</option>
+                    <option value="2K - ">2K</option>
+                    <option value="FHD - ">FHD</option>
+                    <option value="HD - ">HD</option>
+                    <option value="SD - ">SD</option>
+                </select>
+                <input type="text" name="name" placeholder="Nombre del servidor" class="bg-transparent p-4 outline-none text-sm font-semibold"/>
+                <select name="quality" class="bg-transparent p-4 outline-none text-sm font-semibold">
+                    <option value="720p">Calidad del video</option>
+                    <option value="4K">4K</option>
+                    <option value="2K">2K</option>
+                    <option value="HD">HD</option>
+                    <option value="FHD">FHD</option>
+                    <option value="SD">SD</option>
+                    <option value="4320p">4320p</option>
+                    <option value="2160p">2160p</option>
+                    <option value="1440p">1440p</option>
+                    <option value="1080p">1080p</option>
+                    <option value="720p">720p</option>
+                    <option value="480p">480p</option>
+                    <option value="360p">360p</option>
+                    <option value="240p">240p</option>
+                    <option value="HD4320p">HD4320p</option>
+                    <option value="HD2160p">HD2160p</option>
+                    <option value="HD1440p">HD1440p</option>
+                    <option value="HD1080p">HD1080p</option>
+                    <option value="HD720p">HD720p</option>
+                    <option value="HD480p">HD480p</option>
+                    <option value="HD360p">HD360p</option>
+                    <option value="HD240p">HD240p</option>
+                </select>
+                <input type="text" name="url" placeholder="URL video embed" class="bg-transparent p-4 outline-none text-sm font-semibold"/>
+                <select name="video" class="bg-transparent p-4 outline-none text-sm font-semibold">
+                    <option value="false">iframe</option>
+                    <option value="true">video</option>
+                </select>
+                <button class="bg-indigo-500 text-white text-center font-bold uppercase">Agregar</button>
+            </div>
+            <div class="dynamic-insert" id="embed-link"></div>
+        </div>
+        <div id="download" class="builder-dl tabs-element dynamic-data">
+            <div class="grid grid-cols-5 bg-zinc-100 rounded-md overflow-auto dynamic-fields" id="embed-fields">
+                <input type="text" name="url" placeholder="URL servidor" class="bg-transparent p-4 outline-none text-sm font-semibold"/>
+                <input type="text" name="name" placeholder="Nombre del servidor" class="bg-transparent p-4 outline-none text-sm font-semibold"/>
+                <select name="quality" class="bg-transparent p-4 outline-none text-sm font-semibold">
+                    <option value="">Calidad del video</option>
+                    <option value="8K">8K</option>
+                    <option value="4K">4K</option>
+                    <option value="2K">2K</option>
+                    <option value="HD">HD</option>
+                    <option value="SD">SD</option>
+                    <option value="4320p">4320p</option>
+                    <option value="2160p">2160p</option>
+                    <option value="1440p">1440p</option>
+                    <option value="1080p">1080p</option>
+                    <option value="720p">720p</option>
+                    <option value="480p">480p</option>
+                    <option value="360p">360p</option>
+                    <option value="240p">240p</option>
+                </select>
+                <input type="text" name="size" placeholder="Nombre" class="bg-transparent p-4 outline-none text-sm font-semibold"/>
+                <button class="bg-indigo-500 text-white text-center font-bold uppercase">Agregar</button>
+            </div>
+            <div class="dynamic-insert" id="dl"></div>
+        </div>
+        <div id="fields" class="builder-fields tabs-element is-visible">
+            <div class="grid grid-cols-1 lg:grid-cols-1 gap-4">
+                <!-- #title -->
+                <div class="w-full mb-6"><label for="title" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Title</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" id="title" type="text" value="" name="title"></div>
+
+                <!-- #url serie -->
+                <div class="w-full mb-6"><label for="serie_url" class="block select-none mb-2 text-sm font-semibold text-zinc-700">URL de la serie</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" id="serie_url" type="text" value="" name="serie_url"></div>
+            </div>
+
+            <!-- #extra content -->
+            <div id="tmdbX" class="w-full mb-6">
+                <label for="content" class="block select-none mb-2 text-sm font-semibold text-zinc-700">ID Episodio</label>
+                <textarea id="content" name="content" class="w-full p-4 border-2 border-zinc-200 rounded focus:outline-indigo-500"></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 mb-4">
+                <!-- poster -->
+                <div class="w-full mb-6"><label for="episode_image" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Imagen del episodio</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" placeholder="Hotlinks for poster image" id="episode_image" type="text" value="" name="episode_image"></div>
+                <!-- player image -->
+                <div class="w-full mb-6"><label for="backdrop_player" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Player image</label><input class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" placeholder="Hotlink for player image (optional)" id="backdrop_player" type="text" value="" name="backdrop_player"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <!-- Season -->
+                <div class="w-full mb-6"><label for="season" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Season</label><input type="number" class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" placeholder="Current season" id="season" name="season" value=""></div>
+                <!-- episode -->
+                <div class="w-full mb-6"><label for="episode" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Episode</label><input type="number" class="w-full p-4 py-3 border-2 border-zinc-200 rounded focus:outline-indigo-500" placeholder="Episode number" id="episode" name="episode" value=""></div>
+            </div>
+
+            <!-- #synopsis -->
+            <div class="w-full mb-6">
+                <label for="synopsis" class="block select-none mb-2 text-sm font-semibold text-zinc-700">Resumen episodio</label>
+                <textarea id="synopsis" name="synopsis" class="w-full p-4 border-2 border-zinc-200 rounded focus:outline-indigo-500"></textarea>
+            </div>
+        </div>
+        <div class="sticky bottom-0 w-full p-6 pt-0 text-center bg-gradient-to-b from-transparent to-white z-10">
+            <button id="generate-html" class="bg-indigo-500 text-white text-sm p-4 leading-none rounded uppercase font-bold hover:bg-indigo-600 duration-200">
+                Obtener HTML
+            </button>
+        </div>
+    </div>
+    <!-- FORM-HTML#END -->
+</div>
+<!-- FORM#END -->
+<script src="./templates.js"></script>
+<script src="./template.embed.js"></script>
+<script src="./template.download.js"></script>
+<script src="../../assets/js/bundle.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>$(document).ready(function(){
+    $("input#proId").on("keyup", function(){
+        var valor = $(this).val();
+        var soloNumeros = '';
+        // Expresión regular para encontrar números después de "/movie/" o "/tv/"
+        var match = valor.match(/\/(movie|tv)\/(\d+)/);
+        if (match) {
+        soloNumeros = match[2];
+        }
+        $("div#tmdbX textarea").html(soloNumeros);
+    });
+});
+    </script>
+</body>
+</html>
