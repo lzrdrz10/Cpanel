@@ -1,0 +1,103 @@
+
+------------------------------------------------------------------
+     █░█ █▀▀ █▀█ █▀█ ▄▀█ █▀▄▀█ █ █▀▀ █▄░█ ▀█▀ ▄▀█ █▀
+     █▀█ ██▄ █▀▄ █▀▄ █▀█ █░▀░█ █ ██▄ █░▀█ ░█░ █▀█ ▄█
+------------------------------------------------------------------
+
+###𝗠𝗣𝗢𝗥𝗧𝗔𝗡𝗧𝗘##
+Buscar el siguiente codigo y reemplazar los datos:
+
+!-- ./footer -->
+
+#𝗪𝗘𝗕 𝗣𝗔𝗡𝗘𝗟: https://www.themoviedb.org/ 
+
+#¿𝗖𝗢𝗠𝗢 𝗜𝗡𝗦𝗧𝗔𝗟𝗔𝗥 𝗘𝗟 𝗧𝗘𝗠𝗔? ###
+||| (Antes de realizar esto, te comento...
+si tienes cualquier tipo de widget en el
+apartado de diseño estos se borraran) |||
+
+Entra a ➤ blogger.com ➤ TEMA ➤ Luego presiona sobre "🔽" ➤ EDITAR HTML
+una ves dentro seleccionas todo con Ctrl + A y lo borras.
+
+Luego te dirigues al tema adquirido, lo abres, "seleccionas todo" y
+pegamos el codigo en el ditor.
+
+Por ultimo en la misma ventana te diriges a la esquina superior
+derecha, presionas en el boton que esta al lado de la flecha
+que apunta a la izquierda.
+
+sabras que el tema se guardo si en la esquina inferior
+izquierda aparece el mensaje "La actualización se realizo correctamente".
+
+Luego dirijase a ➤ Configuración ➤ Feed del sitio y estando ahi 
+debe habilitar "Vinculos de redifución y titulo". ¡Y listo! 
+
+
+
+### 𝗘𝗗𝗜𝗧𝗔𝗥 𝗠𝗘𝗡𝗨 ###
+Para realizar esta acción te recuerdo que existen 2 menus
+
+1° <!-- MENU PC -->
+2° <!-- MENU Mobile -->
+
+IMPORTANTE ➤ No modificar la "𝗖𝗟𝝙𝗦𝗦" de "Buscar".
+
+para ubicarlos entra aal "Editor html" presionas Ctrl + F y se
+abrira un campo, ahi pegas la opcion 1° u la opción 2°.
+ 
+
+
+### 𝐅𝐔𝐄𝐍𝐓𝐄 𝐃𝐄 𝐈𝐂𝐎𝐍𝐎𝐒 ###
+https://fontawesome.com/search?q=
+
+
+
+### 𝗘𝗗𝗜𝗧𝗔𝗥 𝗘𝗟 𝗧𝗜𝗣𝗢 𝗗𝗘 𝗖𝗢𝗠𝗘𝗡𝗧𝗔𝗥𝗜𝗢 ### 
+Primero vaya a tema y habra el "Editor HTML" luego presione Ctrl + f
+y en el cuadro que le aparesca pega lo siguiente
+
+<!-- Global config --> 
+
+estando ahi solo editaremos lo que este dentro de "value"
+con la caja de comentarios que quedramos
+
+            value="CAJA_DE_COMENTARIOS"
+            value="ID_DISQUS"
+
+CAJA DE COMENTARIOS: facebook, disqus, blogger
+ID DISQUS: solo si usas la caja de comentarios de disqus.
+
+
+
+### 𝗘𝗗𝗜𝗧𝗔𝗥 𝗘𝗟 𝗟𝗢𝗚𝗢 ###
+Primero vaya a tema y habra el "Editor HTML" luego presione Ctrl + f
+y en el cuadro que le aparesca pega lo siguiente
+
+<img alt='AnimeFlix' class='w-[96px]' src='
+
+luego ubique "src=" vera un link solo reemplaselo con el link de su imagen.
+dimensiones recomendadas: 300 x 86px
+
+
+
+###  𝗘𝗗𝗜𝗧𝗔𝗥 𝗘𝗟 𝗥𝗘𝗗𝗘𝗦 𝗦𝗢𝗖𝗜𝗔𝗟𝗘𝗦 ###
+Primero vaya a tema y habra el "Editor HTML" luego presione Ctrl + f
+y en el cuadro que le aparesca pega lo siguiente
+
+<div class='footer-social flex flex-wrap items-center gap-4'>
+
+Luego en este listado reemplaza "#" por tu enlace y 
+para reemplazar los icono elimina <i -------- />
+y reemplazalo por el que quieras.
+
+fuente de iconos: https://fontawesome.com/search?q=
+
+<a href='#'><i class='fab fa-facebook-square'/></a>
+<a href='#'><i class='fab fa-twitter'/></a>
+<a href='#'><i class='fa-brands fa-instagram'/></a>
+<a href='#'><i class='fa-brands fa-telegram'/></a>
+<a href='#'><i class='fa-brands fa-whatsapp'/></a>
+ 
+
+
+
